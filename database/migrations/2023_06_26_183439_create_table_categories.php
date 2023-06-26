@@ -11,10 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name');
             $table->string('description')->nullable();
+            $table->timestamps();
+        });
+        Schema::create('posts_categories', function (Blueprint $table) {
+            $table->uuid('category_id');
+            $table->foreign('category_id')->references('id')->on('categories');
+            $table->uuid('post_id');
+            $table->foreign('post_id')->references('id')->on('posts');
             $table->timestamps();
         });
     }
@@ -24,6 +31,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('posts_categories');
+        Schema::dropIfExists('categories');
     }
 };

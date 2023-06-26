@@ -11,10 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('tags', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name');
             $table->string('description')->nullable();
+            $table->timestamps();
+        });
+        Schema::create('post_tags', function (Blueprint $table) {
+            $table->uuid('tags_id');
+            $table->foreign('tags_id')->references('id')->on('tags');
+            $table->uuid('post_id');
+            $table->foreign('post_id')->references('id')->on('posts');
             $table->timestamps();
         });
     }
@@ -24,6 +31,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('post_tags');
+        Schema::dropIfExists('tags');
     }
 };
