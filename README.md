@@ -51,7 +51,7 @@ Congratulation if everything goes well you can see the app running [here](http:/
 ### Running migration
 1. to create migration
 ```bash php artisan make:migration create_<table name>_table
-./vendor/bin/sail php artisan migrate
+./vendor/bin/sail php artisan make:migration create_table_images --create=images
 ```
 2. to run migrations
 ```bash
@@ -62,6 +62,22 @@ Congratulation if everything goes well you can see the app running [here](http:/
 ./vendor/bin/sail php artisan migrate:reset
 ```
 
+### Models
+```
+./vendor/bin/sail php artisan make:model Role
+```
+
+### Running Factory
+1. Create Factory
+```
+./vendor/bin/sail php artisan make:factory RolesFactory --model=Roles
+```
+
+### Running seeder
+1. Create seeder
+```
+./vendor/bin/sail php artisan make:seeder RolesTableSeeder
+```
 
 ## License
 
