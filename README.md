@@ -9,37 +9,59 @@
 
 ## Game Guru
 
-A videogame blog app
+A videogame blog app built in Laravel and just with Docker
 
-## Contributing
+## Run the App
 
-to execute the app:
+1. First you need to have installed [Docker](https://www.docker.com)
+
+2. Install composer dependencies
 
 ```bash
-docker-compose up -d
+docker run --rm -v $(pwd):/app composer install
+```
+3. Once __vendor__ folder its filled copy
 
-or
+```bash
+cp .env.example .env
+```
+4. Start docker services
 
-./vendor/bin/sail up -d 
+```bash
+./vendor/bin/sail up -d
+```
+5. Install node dependencies
+
+```bash
+./vendor/bin/sail npm i
+```
+6. Generate your app key with artisant 
+
+```bash
+./vendor/bin/sail php artisan key:generate
 ```
 
-then run:
+7. Run Vite
 
+```bash
+./vendor/bin/sail npm run dev
 ```
-./vendor/bin/sail npm run dev 
+Congratulation if everything goes well you can see the app running [here](http://localhost)
+
+### Running migration
+1. to create migration
+```bash php artisan make:migration create_<table name>_table
+./vendor/bin/sail php artisan migrate
+```
+2. to run migrations
+```bash
+./vendor/bin/sail php artisan migrate
+```
+3. to reset migrations
+```bash
+./vendor/bin/sail php artisan migrate:reset
 ```
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
 ## License
 
