@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use App\Models\Role;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class RolesTableSeeder extends Seeder
 {
@@ -12,6 +14,26 @@ class RolesTableSeeder extends Seeder
      */
     public function run(): void
     {
-        Role::factory()->count(10)->create();
+        DB::table('roles')->insert([
+            'id' => Str::uuid(),
+            'name' => 'ADMIN',
+            'description' => 'all permissions',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        DB::table('roles')->insert([
+            'id' => Str::uuid(),
+            'name' => 'WRITER',
+            'description' => 'can write posts',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        DB::table('roles')->insert([
+            'id' => Str::uuid(),
+            'name' => 'READER',
+            'description' => 'can read posts',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
     }
 }
