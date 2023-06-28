@@ -63,6 +63,7 @@ Congratulation if everything goes well you can see the app running [here](http:/
 ```
 
 ### Models
+1. Create a model
 ```
 ./vendor/bin/sail php artisan make:model Role
 ```
@@ -70,7 +71,7 @@ Congratulation if everything goes well you can see the app running [here](http:/
 ### Running Factory
 1. Create Factory
 ```
-./vendor/bin/sail php artisan make:factory RolesFactory --model=Roles
+./vendor/bin/sail php artisan make:factory RoleFactory --model=Role
 ```
 
 ### Running seeder
@@ -78,6 +79,16 @@ Congratulation if everything goes well you can see the app running [here](http:/
 ```
 ./vendor/bin/sail php artisan make:seeder RolesTableSeeder
 ```
+2. Run Seeder
+```
+./vendor/bin/sail php artisan db:seed --class=RolesTableSeeder
+
+```
+### Running Controllers
+```
+./vendor/bin/sail php artisan make:controller RoleController
+```
+
 
 ## License
 

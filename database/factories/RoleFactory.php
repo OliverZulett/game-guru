@@ -2,13 +2,16 @@
 
 namespace Database\Factories;
 
+use App\Models\Role;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Roles>
  */
-class RolesFactory extends Factory
+class RoleFactory extends Factory
 {
+    protected $model = Role::class;
+    
     /**
      * Define the model's default state.
      *
@@ -17,9 +20,9 @@ class RolesFactory extends Factory
     public function definition(): array
     {
         return [
-            'id' => fake()->uuid(),
-            'name' => fake()->unique()->word(),
-            'description' => fake()->words(20),
+            'id' => $this->faker->uuid(),
+            'name' => $this->faker->unique()->word(),
+            'description' => $this->faker->words(20, true),
         ];
     }
 }
