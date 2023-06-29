@@ -66,25 +66,31 @@ Congratulation if everything goes well you can see the app running [here](http:/
 1. Create a model
 ```
 ./vendor/bin/sail php artisan make:model Role
+./vendor/bin/sail php artisan make:model Category
 ```
 
 ### Running Factory
 1. Create Factory
 ```
 ./vendor/bin/sail php artisan make:factory RoleFactory --model=Role
+./vendor/bin/sail php artisan make:factory RoleFactory --model=Category
 ```
 
 ### Running seeder
 1. Create seeder
 ```
 ./vendor/bin/sail php artisan make:seeder RolesTableSeeder
+./vendor/bin/sail php artisan make:seeder CategoriesTableSeeder
 ```
 2. Run Seeder
 ```
 ./vendor/bin/sail php artisan db:seed --class=RolesTableSeeder
+ ./vendor/bin/sail php artisan db:seed --class=CategoriesTableSeeder
 
 ```
-### Running Controllers
+### Controllers
+
+1. Create controller:
 ```
 ./vendor/bin/sail php artisan make:controller RoleController
 ```
