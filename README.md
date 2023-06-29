@@ -1,99 +1,59 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
-
-## Game Guru
+# Game Guru
 
 A videogame blog app built in Laravel and just with Docker
 
-## Run the App
+## Software needed
 
-1. First you need to have installed [Docker](https://www.docker.com)
+Docker and docker-compose [Docker](https://www.docker.com)
 
-2. Install composer dependencies
+## How to run the App
 
+### Setup DEV environment
+
+1. Install composer dependencies from a composer docker image in the root folder:
 ```bash
 docker run --rm -v $(pwd):/app composer install
 ```
-3. Once __vendor__ folder its filled copy
 
+2. Once __vendor__ folder its filled copy de __.env__ file:
 ```bash
 cp .env.example .env
 ```
-4. Start docker services
 
+3. Start docker-compose services:
 ```bash
 ./vendor/bin/sail up -d
 ```
-5. Install node dependencies
 
+4. Install node dependencies:
 ```bash
 ./vendor/bin/sail npm i
 ```
-6. Generate your app key with artisant 
 
+5. Generate your app key with artisant: 
 ```bash
 ./vendor/bin/sail php artisan key:generate
 ```
 
-7. Run Vite
-
-```bash
-./vendor/bin/sail npm run dev
-```
-Congratulation if everything goes well you can see the app running [here](http://localhost)
-
-### Running migration
-1. to create migration
-```bash php artisan make:migration create_<table name>_table
-./vendor/bin/sail php artisan make:migration create_table_images --create=images
-```
-2. to run migrations
+6. Execute migrations:
 ```bash
 ./vendor/bin/sail php artisan migrate
 ```
-3. to reset migrations
+
+7. Execute Seeders
 ```bash
-./vendor/bin/sail php artisan migrate:reset
-```
-
-### Models
-1. Create a model
-```
-./vendor/bin/sail php artisan make:model Role
-./vendor/bin/sail php artisan make:model Category
-```
-
-### Running Factory
-1. Create Factory
-```
-./vendor/bin/sail php artisan make:factory RoleFactory --model=Role
-./vendor/bin/sail php artisan make:factory RoleFactory --model=Category
-```
-
-### Running seeder
-1. Create seeder
-```
-./vendor/bin/sail php artisan make:seeder RolesTableSeeder
-./vendor/bin/sail php artisan make:seeder CategoriesTableSeeder
-```
-2. Run Seeder
-```
 ./vendor/bin/sail php artisan db:seed --class=RolesTableSeeder
- ./vendor/bin/sail php artisan db:seed --class=CategoriesTableSeeder
+./vendor/bin/sail php artisan db:seed --class=CategoriesTableSeeder
+```
 
+8. Run Vite
+```bash
+./vendor/bin/sail npm run dev
 ```
-### Controllers
 
-1. Create controller:
-```
-./vendor/bin/sail php artisan make:controller RoleController
-```
+_Congratulation_ if everything goes well you can see the app running [here](http://localhost)
 
 
 ## License
