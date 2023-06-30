@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,6 +52,14 @@ Route::put('/categories/update/{id}', [CategoryController::class, 'update'])->mi
 Route::get('/categories/create', [CategoryController::class, 'create'])->middleware(['auth', 'verified'])->name('categories.create');
 Route::post('/categories', [CategoryController::class, 'store'])->middleware(['auth', 'verified'])->name('categories.store');
 Route::get('/categories/delete/{id}', [CategoryController::class, 'destroy'])->middleware(['auth', 'verified'])->name('categories.destroy');
+
+// Tags Routes
+Route::get('/tags', [TagController::class, 'index'])->middleware(['auth', 'verified'])->name('tags');
+Route::get('/tags/edit/{id}', [TagController::class, 'edit'])->middleware(['auth', 'verified'])->name('tags.edit');
+Route::put('/tags/update/{id}', [TagController::class, 'update'])->middleware(['auth', 'verified'])->name('tags.update');
+Route::get('/tags/create', [TagController::class, 'create'])->middleware(['auth', 'verified'])->name('tags.create');
+Route::post('/tags', [TagController::class, 'store'])->middleware(['auth', 'verified'])->name('tags.store');
+Route::get('/tags/delete/{id}', [TagController::class, 'destroy'])->middleware(['auth', 'verified'])->name('tags.destroy');
 
 
 require __DIR__.'/auth.php';

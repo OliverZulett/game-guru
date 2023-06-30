@@ -60,6 +60,41 @@ Util commands to work with Laravel
 ./vendor/bin/sail php artisan make:controller RoleController
 ```
 
+## How to create new resource
+
+guide of how to create a new resource:
+
+1. Create migration:
+```bash 
+./vendor/bin/sail php artisan make:migration create_table_tags --create=tags
+```
+2. update migrate with columns
+
+3. Run all migrations:
+```bash
+./vendor/bin/sail php artisan migrate
+```
+
+4. Create model:
+```bash
+./vendor/bin/sail php artisan make:model Tag
+```
+
+5. Update model
+
+6. Create Factory:
+```bash
+./vendor/bin/sail php artisan make:factory TagFactory --model=Tag
+```
+
+7. Update factory
+
+8. Create Seeder:
+```bash
+./vendor/bin/sail php artisan make:seeder TagsTableSeeder
+```
+
+9. Update Seeder
 
 ## License
 
