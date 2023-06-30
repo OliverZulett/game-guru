@@ -25,7 +25,7 @@
 
             <div class="mb-4">
               <label for="email" class="block text-gray-700 text-sm font-bold mb-2">{{ __("Password") }}</label>
-              <input type="text" name="password" id="password" value="{{ $user->password }}" class="border border-gray-300 rounded-md p-2 w-full">
+              <input type="password" name="password" id="password" value="{{ $user->password }}" class="border border-gray-300 rounded-md p-2 w-full">
             </div>
 
             <div class="mb-4">

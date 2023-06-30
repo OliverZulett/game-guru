@@ -18,6 +18,11 @@
             </div>
 
             <div class="mb-4">
+              <label for="image" class="block text-gray-700 text-sm font-bold mb-2">{{ __("Image") }}</label>
+              <input type="text" name="image" id="image" value="{{ old('name') }}" class="border border-gray-300 rounded-md p-2 w-full">
+            </div>
+
+            <div class="mb-4">
               <label for="email" class="block text-gray-700 text-sm font-bold mb-2">{{ __("Email") }}</label>
               <input type="text" name="email" id="email" value="{{ old('email') }}" class="border border-gray-300 rounded-md p-2 w-full">
             </div>

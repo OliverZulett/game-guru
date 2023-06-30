@@ -46,6 +46,8 @@ cp .env.example .env
 ```bash
 ./vendor/bin/sail php artisan db:seed --class=RolesTableSeeder
 ./vendor/bin/sail php artisan db:seed --class=CategoriesTableSeeder
+./vendor/bin/sail php artisan db:seed --class=TagsTableSeeder
+./vendor/bin/sail php artisan db:seed --class=UsersTableSeeder
 ```
 
 8. Run Vite
