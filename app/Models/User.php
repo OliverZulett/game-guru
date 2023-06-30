@@ -14,6 +14,11 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $primaryKey = 'id';
+    public $incrementing = false;
+    protected $keyType = 'string';
+    protected $table = 'users';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -23,6 +28,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role_id',
     ];
 
     /**
@@ -44,17 +50,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-    
+
     protected static function boot()
     {
         parent::boot();
-        
+
         static::creating(function ($model) {
-            $role = Role::where('name', 'READER')->firstOrFail();
-            $roleId = $role->id;
-            
             $model->id = Uuid::uuid4()->toString();
-            $model->role_id = $roleId;
         });
     }
 }
