@@ -59,4 +59,9 @@ class User extends Authenticatable
             $model->id = Uuid::uuid4()->toString();
         });
     }
+
+    public function images()
+    {
+        return $this->hasMany(Image::class, 'imageable_id');
+    }
 }

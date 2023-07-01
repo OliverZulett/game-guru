@@ -18,8 +18,8 @@
             </div>
 
             <div class="mb-4">
-              <label for="image" class="block text-gray-700 text-sm font-bold mb-2">{{ __("Image") }}</label>
-              <input type="text" name="image" id="image" value="{{ old('name') }}" class="border border-gray-300 rounded-md p-2 w-full">
+              <label for="image" class="block text-gray-700 text-sm font-bold mb-2">{{ __("Image Link") }}</label>
+              <input type="text" name="url" id="image" value="{{ old('image') }}" class="border border-gray-300 rounded-md p-2 w-full">
             </div>
 
             <div class="mb-4">

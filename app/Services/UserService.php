@@ -23,6 +23,11 @@ class UserService
     return $this->userRepository->getAllWithRoleNames();
   }
 
+  public function getAllUsersWithRoleNamesAndImage()
+  {
+    return $this->userRepository->getAllWithRoleNamesAndImage();
+  }
+
   public function getUserById($id)
   {
     return $this->userRepository->getById($id);

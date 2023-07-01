@@ -16,8 +16,12 @@ return new class extends Migration
             $table->string('url');
             $table->string('title')->nullable();
             $table->string('description')->nullable();
-            $table->morphs('imageable');
+            // $table->morphs('imageable');
+            $table->uuid('imageable_id');
+            $table->string('imageable_type');
             $table->timestamps();
+
+            $table->index(['imageable_id', 'imageable_type']);
         });
     }
 

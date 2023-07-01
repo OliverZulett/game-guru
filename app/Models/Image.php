@@ -22,6 +22,9 @@ class Image extends Model
     'imageable_id',
   ];
   protected $table = 'images';
+  // protected $casts = [
+  //   'imageable_id' => 'uuid',
+  // ];
 
   protected static function boot()
   {
@@ -32,9 +35,6 @@ class Image extends Model
     });
   }
 
-  /**
-   * Get the owning imageable model.
-   */
   public function imageable()
   {
     return $this->morphTo();
