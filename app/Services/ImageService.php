@@ -23,6 +23,11 @@ class ImageService
     return $this->imageRepository->getById($id);
   }
 
+  public function getImageByImageableId($id)
+  {
+    return $this->imageRepository->getByImageableId($id);
+  }
+
   public function createImage($image)
   {
     return $this->imageRepository->create($image);

@@ -11,9 +11,7 @@
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 text-gray-900">
           <div class="w-full flex justify-end mb-3">
-            <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" title="Add" onclick="window.location.href='{{ route('roles.create') }}'">
-              + Add
-            </button>
+            <x-primary-button onclick="window.location.href='{{ route('roles.create') }}'">{{ __('+ Add') }}</x-primary-button>
           </div>
           <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-100">

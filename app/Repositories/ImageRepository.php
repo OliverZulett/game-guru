@@ -16,6 +16,11 @@ class ImageRepository
     return Image::findOrFail($id);
   }
 
+  public function getByImageableId($id)
+  {
+    return Image::where('imageable_id', 'like', $id.'%')->first();
+  }
+
   public function create($data)
   {
     return Image::create($data);

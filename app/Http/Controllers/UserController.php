@@ -27,6 +27,12 @@ class UserController extends Controller
     return view('users.index', compact('users'));
   }
 
+  public function preview($id)
+  {
+    $user = $this->userService->getUserByIdWithRoleNamesAndImage($id);
+    return view('users.preview', compact('user'));
+  }
+
   public function create()
   {
     $roles = $this->roleService->getAllRoles();

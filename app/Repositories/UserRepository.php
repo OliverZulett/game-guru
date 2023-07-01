@@ -26,6 +26,15 @@ class UserRepository
       ->get();
   }
 
+  public function getByIdWithRoleNamesAndImage($id)
+  {
+    return User::leftJoin('roles', 'users.role_id', '=', 'roles.id')
+      ->leftJoin('images', 'users.id', '=', 'imageable_id')
+      ->select('users.*', 'roles.name as role_name', 'images.url')
+      ->where('users.id', '=', $id)
+      ->first();
+  }
+
   public function getById($id)
   {
     return User::findOrFail($id);
