@@ -38,6 +38,7 @@ Util commands to work with Laravel
 ```bash
 ./vendor/bin/sail php artisan make:factory RoleFactory --model=Role
 ./vendor/bin/sail php artisan make:factory RoleFactory --model=Category
+./vendor/bin/sail php artisan make:factory PostFactory --model=Post
 ```
 
 ### Seeders
@@ -45,12 +46,14 @@ Util commands to work with Laravel
 ```bash
 ./vendor/bin/sail php artisan make:seeder RolesTableSeeder
 ./vendor/bin/sail php artisan make:seeder CategoriesTableSeeder
+./vendor/bin/sail php artisan make:seeder PostsTableSeeder
 ```
 
 * Execute Seeder
 ```bash
 ./vendor/bin/sail php artisan db:seed --class=RolesTableSeeder
 ./vendor/bin/sail php artisan db:seed --class=CategoriesTableSeeder
+./vendor/bin/sail php artisan db:seed --class=PostsTableSeeder
 
 ```
 ### Controllers

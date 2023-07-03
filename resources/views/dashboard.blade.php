@@ -40,7 +40,7 @@
                         <h1 class="text-9xl">{{ $metrics['totalTags'] }}</h1>
                     </div>
                 </div>
-                <div class="card cursor-pointer p-6 sm:rounded-lg drop-shadow-md text-white bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+                <div onclick="window.location.href='{{ route('posts') }}'" class="card cursor-pointer p-6 sm:rounded-lg drop-shadow-md text-white bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
                     <div class="label mb-3">
                         <p class="text-2xl">posts</p>
                     </div>

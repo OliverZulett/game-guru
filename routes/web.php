@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TagController;
@@ -64,7 +65,6 @@ Route::put('/tags/update/{id}', [TagController::class, 'update'])->middleware(['
 Route::get('/tags/create', [TagController::class, 'create'])->middleware(['auth', 'verified'])->name('tags.create');
 Route::post('/tags', [TagController::class, 'store'])->middleware(['auth', 'verified'])->name('tags.store');
 Route::get('/tags/delete/{id}', [TagController::class, 'destroy'])->middleware(['auth', 'verified'])->name('tags.destroy');
-Route::get('/categories/delete/{id}', [CategoryController::class, 'destroy'])->middleware(['auth', 'verified'])->name('categories.destroy');
 
 // Users Routes
 Route::get('/users', [UserController::class, 'index'])->middleware(['auth', 'verified'])->name('users');
@@ -75,5 +75,13 @@ Route::get('/users/{id}', [UserController::class, 'preview'])->middleware(['auth
 Route::post('/users', [UserController::class, 'store'])->middleware(['auth', 'verified'])->name('users.store');
 Route::get('/users/delete/{id}', [UserController::class, 'destroy'])->middleware(['auth', 'verified'])->name('users.destroy');
 
+
+// Posts Routes
+Route::get('/posts', [PostController::class, 'index'])->middleware(['auth', 'verified'])->name('posts');
+Route::get('/posts/edit/{id}', [PostController::class, 'edit'])->middleware(['auth', 'verified'])->name('posts.edit');
+Route::put('/posts/update/{id}', [PostController::class, 'update'])->middleware(['auth', 'verified'])->name('posts.update');
+Route::get('/posts/create', [PostController::class, 'create'])->middleware(['auth', 'verified'])->name('posts.create');
+Route::post('/posts', [PostController::class, 'store'])->middleware(['auth', 'verified'])->name('posts.store');
+Route::get('/posts/delete/{id}', [PostController::class, 'destroy'])->middleware(['auth', 'verified'])->name('posts.destroy');
 
 require __DIR__.'/auth.php';
