@@ -66,7 +66,7 @@ class UserController extends Controller
 
   public function edit($id)
   {
-    $user = $this->userService->getUserById($id);
+    $user = $this->userService->getUserByIdWithRoleNamesAndImage($id);
     $roles = $this->roleService->getAllRoles();
     return view('users.edit', compact('user', 'roles'));
   }
@@ -79,8 +79,27 @@ class UserController extends Controller
       'password' => 'required|string',
       'role_id' => 'required|string',
     ]);
+
     $userData['role_id'] = $request->input('role_id');
-    $this->userService->updateUser($id, $userData);
+
+    $userUpdated = $this->userService->updateUser($id, $userData);
+
+    $userImage = $this->imageService->getImageByImageableId($userUpdated->id);
+
+    if (!$userImage && $request->has('url')) {
+      $userImage = [
+        'url' => $request->input('url'),
+        'title' => $userUpdated->name,
+        'imageable_id' => $userUpdated->id,
+        'imageable_type' => class_basename(get_class($userUpdated)),
+      ];
+
+      $this->imageService->createImage($userImage);
+    } elseif ($userImage && $request->has('url')) {
+      $userImage->url = $request->input('url');
+      $this->imageService->updateImage($userImage->id, $userImage);
+    }
+
     return Redirect::route('users')->with('status', 'user-updated');
   }
 

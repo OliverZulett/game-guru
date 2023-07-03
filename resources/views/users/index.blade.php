@@ -39,10 +39,10 @@
             <tbody class="bg-white divide-y divide-gray-200">
               @foreach ($users as $user)
               <tr>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <img src="{{ $user->url ? $user->url : 'https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2531&q=80' }}" alt="Imagen" style="width: 30px; height: 30px; border-radius: 50%;">
+                <td class="px-6 py-4">
+                  <img class="rounded-full w-10 h-10 object-cover" src="{{ $user->url ? $user->url : 'https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2531&q=80' }}" alt="Imagen">
                 </td>
-                <td class="px-6 py-4 whitespace-nowrap">
+                <td class="whitespace-nowrap">
                   {{ $user->name }}
                 </td>
                 <td class="px-6 py-4">

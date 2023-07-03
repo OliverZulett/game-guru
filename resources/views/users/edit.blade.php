@@ -19,6 +19,11 @@
             </div>
 
             <div class="mb-4">
+              <label for="image" class="block text-gray-700 text-sm font-bold mb-2">{{ __("Image Link") }}</label>
+              <input type="text" name="url" id="image" value="{{ $user->url }}" class="border border-gray-300 rounded-md p-2 w-full">
+            </div>
+
+            <div class="mb-4">
               <label for="email" class="block text-gray-700 text-sm font-bold mb-2">{{ __("Email") }}</label>
               <input type="text" name="email" id="email" value="{{ $user->email }}" class="border border-gray-300 rounded-md p-2 w-full">
             </div>

@@ -65,10 +65,10 @@ Route::get('/categories/delete/{id}', [CategoryController::class, 'destroy'])->m
 
 // Users Routes
 Route::get('/users', [UserController::class, 'index'])->middleware(['auth', 'verified'])->name('users');
-Route::get('/users/{id}', [UserController::class, 'preview'])->middleware(['auth', 'verified'])->name('users.preview');
+Route::get('/users/create', [UserController::class, 'create'])->middleware(['auth', 'verified'])->name('users.create');
 Route::get('/users/edit/{id}', [UserController::class, 'edit'])->middleware(['auth', 'verified'])->name('users.edit');
 Route::put('/users/update/{id}', [UserController::class, 'update'])->middleware(['auth', 'verified'])->name('users.update');
-Route::get('/users/create', [UserController::class, 'create'])->middleware(['auth', 'verified'])->name('users.create');
+Route::get('/users/{id}', [UserController::class, 'preview'])->middleware(['auth', 'verified'])->name('users.preview');
 Route::post('/users', [UserController::class, 'store'])->middleware(['auth', 'verified'])->name('users.store');
 Route::get('/users/delete/{id}', [UserController::class, 'destroy'])->middleware(['auth', 'verified'])->name('users.destroy');
 
