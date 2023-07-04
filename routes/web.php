@@ -22,15 +22,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::get('/', function () {
-    return Redirect::to('/dashboard');
+    return view('index');
 });
 
-Route::get('/', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/', function () {
+//     return Redirect::to('/dashboard');
+// });
+
+// Route::get('/', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 // Route::get('/dashboard', function () {
 //     return view('dashboard');

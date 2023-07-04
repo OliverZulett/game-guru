@@ -20,7 +20,7 @@ class RoleController extends Controller
     {
         $roles = $this->roleService->getAllRoles();
 
-        return view('roles', compact('roles'));
+        return view('roles.index', compact('roles'));
     }
 
     public function create()

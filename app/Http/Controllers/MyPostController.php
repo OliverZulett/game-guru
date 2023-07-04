@@ -30,13 +30,13 @@ class MyPostController extends Controller
   {
     $posts = $this->postService->getAllPostsByUserId(Auth::user()->id);
     $currentPage = LengthAwarePaginator::resolveCurrentPage();
-    $perPage = 10;
+    $perPage = 5;
     $posts = new LengthAwarePaginator(
-        $posts->forPage($currentPage, $perPage),
-        $posts->count(),
-        $perPage,
-        $currentPage,
-        ['path' => LengthAwarePaginator::resolveCurrentPath()]
+      $posts->forPage($currentPage, $perPage),
+      $posts->count(),
+      $perPage,
+      $currentPage,
+      ['path' => LengthAwarePaginator::resolveCurrentPath()]
     );
     return view('myPosts.index', compact('posts'));
   }
@@ -57,7 +57,7 @@ class MyPostController extends Controller
     ]);
     $postData['user_id'] = Auth::user()->id;
     $post = $this->postService->createPost($postData);
-    
+
     $postImage = [
       'url' => $request->input('image_url'),
       'title' => $post->name,
@@ -90,10 +90,10 @@ class MyPostController extends Controller
       'content' => 'required|string',
     ]);
     $post = $this->postService->updatePost($id, $postData);
-    
+
     $postImage = $this->imageService->getImageByImageableId($post->id);
 
-    if (!$postImage && $request->has('image_url')) {
+    if (!$postImage && $request->has('image_url') && !empty($request->input('image_url'))) {
       $postImage = [
         'url' => $request->input('image_url'),
         'title' => $post->name,
@@ -115,7 +115,11 @@ class MyPostController extends Controller
   {
     $this->postService->deletePost($id);
     $postImage = $this->imageService->getImageByImageableId($id);
-    $this->imageService->deleteImage($postImage->id);
+
+    if ($postImage) {
+      $this->imageService->deleteImage($postImage->id);
+    }
+
     return Redirect::route('my-posts')->with('status', 'post-deleted');
   }
 }
