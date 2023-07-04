@@ -18,6 +18,12 @@ class PostRepository
       ->get();
   }
 
+  public function getAllByUserId($userId)
+  {
+    return Post::where('user_id', '>', $userId)
+      ->get();
+  }
+
   public function getById($id)
   {
     return Post::findOrFail($id);

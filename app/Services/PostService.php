@@ -23,6 +23,11 @@ class PostService
     return $this->postRepository->getAllWithUserName();
   }
 
+  public function getAllPostsByUserId($id)
+  {
+    return $this->postRepository->getAllByUserId($id);
+  }
+
   public function getPostById($id)
   {
     return $this->postRepository->getById($id);

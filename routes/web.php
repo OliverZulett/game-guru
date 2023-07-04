@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,11 +21,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 Route::get('/', function () {
-    return view('welcome');
+    return Redirect::to('/dashboard');
 });
 
-
+Route::get('/', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -83,5 +88,13 @@ Route::put('/posts/update/{id}', [PostController::class, 'update'])->middleware(
 Route::get('/posts/create', [PostController::class, 'create'])->middleware(['auth', 'verified'])->name('posts.create');
 Route::post('/posts', [PostController::class, 'store'])->middleware(['auth', 'verified'])->name('posts.store');
 Route::get('/posts/delete/{id}', [PostController::class, 'destroy'])->middleware(['auth', 'verified'])->name('posts.destroy');
+
+// Posts Routes
+Route::get('/my-posts/{id}', [PostController::class, 'index'])->middleware(['auth', 'verified'])->name('my-posts');
+Route::get('/my-posts/edit/{id}', [PostController::class, 'edit'])->middleware(['auth', 'verified'])->name('my-posts.edit');
+Route::put('/my-posts/update/{id}', [PostController::class, 'update'])->middleware(['auth', 'verified'])->name('my-posts.update');
+Route::get('/my-posts/create', [PostController::class, 'create'])->middleware(['auth', 'verified'])->name('my-posts.create');
+Route::post('/my-posts', [PostController::class, 'store'])->middleware(['auth', 'verified'])->name('my-posts.store');
+Route::get('/my-posts/delete/{id}', [PostController::class, 'destroy'])->middleware(['auth', 'verified'])->name('my-posts.destroy');
 
 require __DIR__.'/auth.php';
