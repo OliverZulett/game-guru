@@ -8,6 +8,8 @@ A videogame blog app built in Laravel and just with Docker
 
 Docker and docker-compose [Docker](https://www.docker.com)
 
+Nodejs [Docker](https://nodejs.org/en)
+
 ## How to run the App
 
 ### Setup DEV environment
@@ -30,6 +32,10 @@ cp .env.example .env
 4. Install node dependencies:
 ```bash
 ./vendor/bin/sail npm i
+
+or 
+
+npm i
 ```
 
 5. Generate your app key with artisant: 
@@ -50,10 +56,19 @@ cp .env.example .env
 8. Run Vite
 ```bash
 ./vendor/bin/sail npm run dev
+
+or 
+
+npm run dev
 ```
 
 _Congratulation_ if everything goes well you can see the app running [here](http://localhost)
 
+## Software needed
+
+Database Design
+
+![DB desing](./docs/GAME_GURU-V2.png)
 
 ## License
 
