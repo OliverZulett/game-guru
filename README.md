@@ -8,7 +8,7 @@ A videogame blog app built in Laravel and just with Docker
 
 Docker and docker-compose [Docker](https://www.docker.com)
 
-Nodejs [Docker](https://nodejs.org/en)
+Nodejs [Nodejs](https://nodejs.org/en)
 
 ## How to run the App
 
