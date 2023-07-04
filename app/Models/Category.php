@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 use Ramsey\Uuid\Uuid;
 
 class Category extends Model
@@ -22,6 +23,7 @@ class Category extends Model
 
         static::creating(function ($model) {
             $model->id = Uuid::uuid4()->toString();
+            $model->name = Str::upper($model->name);
         });
     }
 }

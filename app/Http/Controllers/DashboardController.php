@@ -7,6 +7,7 @@ use App\Services\PostService;
 use App\Services\RoleService;
 use App\Services\TagService;
 use App\Services\UserService;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -32,6 +33,7 @@ class DashboardController extends Controller
     $categories = $this->categoryService->getAllCategories();
     $tags = $this->tagService->getAllTags();
     $posts = $this->postService->getAllPosts();
+    $myPosts = $this->postService->getAllPostsByUserId(Auth::user()->id);
 
     $metrics = [
       'totalUsers' => count($users),
@@ -39,6 +41,7 @@ class DashboardController extends Controller
       'totalCategories' => count($categories),
       'totalTags' => count($tags),
       'totalPosts' => count($posts),
+      'myTotalPosts' => count($myPosts),
       'totalComments' => 0,
     ];
 
