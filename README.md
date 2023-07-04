@@ -64,7 +64,7 @@ npm run dev
 
 _Congratulation_ if everything goes well you can see the app running [here](http://localhost)
 
-## Software needed
+## System Design
 
 Database Design
 
