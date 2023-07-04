@@ -28,5 +28,20 @@ class Post extends Model
     static::creating(function ($model) {
       $model->id = Uuid::uuid4()->toString();
     });
+
+    static::deleting(function ($post) {
+      $post->categories()->detach();
+      $post->tags()->detach();
+    });
+  }
+
+  public function categories()
+  {
+    return $this->belongsToMany(Category::class, 'posts_categories', 'post_id', 'category_id');
+  }
+
+  public function tags()
+  {
+    return $this->belongsToMany(Tag::class, 'posts_tags', 'post_id', 'tag_id');
   }
 }

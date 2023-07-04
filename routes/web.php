@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MyPostController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
@@ -90,11 +91,11 @@ Route::post('/posts', [PostController::class, 'store'])->middleware(['auth', 've
 Route::get('/posts/delete/{id}', [PostController::class, 'destroy'])->middleware(['auth', 'verified'])->name('posts.destroy');
 
 // Posts Routes
-Route::get('/my-posts/{id}', [PostController::class, 'index'])->middleware(['auth', 'verified'])->name('my-posts');
-Route::get('/my-posts/edit/{id}', [PostController::class, 'edit'])->middleware(['auth', 'verified'])->name('my-posts.edit');
-Route::put('/my-posts/update/{id}', [PostController::class, 'update'])->middleware(['auth', 'verified'])->name('my-posts.update');
-Route::get('/my-posts/create', [PostController::class, 'create'])->middleware(['auth', 'verified'])->name('my-posts.create');
-Route::post('/my-posts', [PostController::class, 'store'])->middleware(['auth', 'verified'])->name('my-posts.store');
-Route::get('/my-posts/delete/{id}', [PostController::class, 'destroy'])->middleware(['auth', 'verified'])->name('my-posts.destroy');
+Route::get('/my-posts', [MyPostController::class, 'index'])->middleware(['auth', 'verified'])->name('my-posts');
+Route::get('/my-posts/edit/{id}', [MyPostController::class, 'edit'])->middleware(['auth', 'verified'])->name('my-posts.edit');
+Route::put('/my-posts/update/{id}', [MyPostController::class, 'update'])->middleware(['auth', 'verified'])->name('my-posts.update');
+Route::get('/my-posts/create', [MyPostController::class, 'create'])->middleware(['auth', 'verified'])->name('my-posts.create');
+Route::post('/my-posts', [MyPostController::class, 'store'])->middleware(['auth', 'verified'])->name('my-posts.store');
+Route::get('/my-posts/delete/{id}', [MyPostController::class, 'destroy'])->middleware(['auth', 'verified'])->name('my-posts.destroy');
 
 require __DIR__.'/auth.php';

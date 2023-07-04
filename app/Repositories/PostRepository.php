@@ -20,7 +20,7 @@ class PostRepository
 
   public function getAllByUserId($userId)
   {
-    return Post::where('user_id', '>', $userId)
+    return Post::where('user_id', $userId)
       ->get();
   }
 

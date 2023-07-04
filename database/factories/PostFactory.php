@@ -24,7 +24,7 @@ class PostFactory extends Factory
     return [
       'title' => fake()->words(10, true),
       'abstract' => fake()->words(20, true),
-      'content' => fake()->words(200, true),
+      'content' => fake()->words(rand(500, 2000), true),
       'user_id' => $users[rand(0, count($users) - 1)],
     ];
   }

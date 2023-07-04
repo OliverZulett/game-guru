@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->timestamps();
         });
-        Schema::create('post_tags', function (Blueprint $table) {
-            $table->uuid('tags_id');
-            $table->foreign('tags_id')->references('id')->on('tags');
+        Schema::create('posts_tags', function (Blueprint $table) {
+            $table->uuid('tag_id');
+            $table->foreign('tag_id')->references('id')->on('tags');
             $table->uuid('post_id');
             $table->foreign('post_id')->references('id')->on('posts');
             $table->timestamps();

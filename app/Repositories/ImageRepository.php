@@ -18,7 +18,7 @@ class ImageRepository
 
   public function getByImageableId($id)
   {
-    return Image::where('imageable_id', 'like', $id.'%')->first();
+    return Image::where('imageable_id', 'like', $id . '%')->first();
   }
 
   public function create($data)
@@ -29,7 +29,7 @@ class ImageRepository
   public function update($id, $data)
   {
     $image = $this->getById($id);
-    $image->update($data);
+    $image->update($data->toArray());
     return $image;
   }
 
