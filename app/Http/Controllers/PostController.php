@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\PostService;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Redirect;
 
 class PostController extends Controller
@@ -18,7 +19,22 @@ class PostController extends Controller
   public function index()
   {
     $posts = $this->postService->getAllPostsWithUsername();
-    return view('posts.index', compact('posts'));
+    $currentPage = LengthAwarePaginator::resolveCurrentPage();
+    $perPage = 12;
+    $posts = new LengthAwarePaginator(
+      $posts->forPage($currentPage, $perPage),
+      $posts->count(),
+      $perPage,
+      $currentPage,
+      ['path' => LengthAwarePaginator::resolveCurrentPath()]
+    );
+    return view('index', compact('posts'));
+  }
+
+  public function preview($id)
+  {
+    $post = $this->postService->getPostById($id);
+    return view('posts.preview', compact('post'));
   }
 
   public function create()

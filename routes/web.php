@@ -22,9 +22,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
+
+Route::get('/', [PostController::class, 'index'])->name('posts');
+Route::get('/posts/{id}', [PostController::class, 'preview'])->name('posts.preview');
 
 // Route::get('/', function () {
 //     return Redirect::to('/dashboard');
@@ -83,11 +86,11 @@ Route::get('/users/delete/{id}', [UserController::class, 'destroy'])->middleware
 
 
 // Posts Routes
-Route::get('/posts', [PostController::class, 'index'])->middleware(['auth', 'verified'])->name('posts');
+// Route::get('/posts', [PostController::class, 'index'])->middleware(['auth', 'verified'])->name('posts');
 Route::get('/posts/edit/{id}', [PostController::class, 'edit'])->middleware(['auth', 'verified'])->name('posts.edit');
-Route::put('/posts/update/{id}', [PostController::class, 'update'])->middleware(['auth', 'verified'])->name('posts.update');
+// Route::put('/posts/update/{id}', [PostController::class, 'update'])->middleware(['auth', 'verified'])->name('posts.update');
 Route::get('/posts/create', [PostController::class, 'create'])->middleware(['auth', 'verified'])->name('posts.create');
-Route::post('/posts', [PostController::class, 'store'])->middleware(['auth', 'verified'])->name('posts.store');
+// Route::post('/posts', [PostController::class, 'store'])->middleware(['auth', 'verified'])->name('posts.store');
 Route::get('/posts/delete/{id}', [PostController::class, 'destroy'])->middleware(['auth', 'verified'])->name('posts.destroy');
 
 // Posts Routes

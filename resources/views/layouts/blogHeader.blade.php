@@ -31,10 +31,10 @@
           </x-slot>
 
           <x-slot name="content">
-            <x-dropdown-link :href="route('profile.edit')" class="bg-[#293241] text-[#EE6C4D]">
+            <x-dropdown-link :href="route('login')" class="text-[#EE6C4D]">
               {{ __('Sing In') }}
             </x-dropdown-link>
-            <x-dropdown-link :href="route('profile.edit')" class="bg-[#293241] text-[#EE6C4D]">
+            <x-dropdown-link :href="route('register')" class="text-[#EE6C4D]">
               {{ __('Sing Up') }}
             </x-dropdown-link>
           </x-slot>
