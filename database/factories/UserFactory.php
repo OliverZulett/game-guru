@@ -18,10 +18,10 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
-        
+
         $role = Role::where('name', 'READER')->firstOrFail();
         $roleId = $role->id;
-        
+
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),

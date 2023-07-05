@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.navigation .text-sm.text-gray-700.leading-5 {
+  color: #EE6C4D;
+  background-color: #293241;
+}
+
+.navigation .cursor-default, .navigation a {
+  color: #E0FBFC;
+  background-color: #3D5A80;
+}
+
+/* .navigation a {
+  color: #E0FBFC;
+  background-color: #3D5A80;
+} */

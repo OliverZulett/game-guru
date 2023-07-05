@@ -4,7 +4,7 @@
     <div class="flex justify-between h-16">
       <div class="flex">
         <!-- Logo -->
-        <div class="text-[#EE6C4D] shrink-0 flex items-center">
+        <div onclick="window.location.href='{{ route('posts') }}'" class="cursor-pointer text-[#EE6C4D] shrink-0 flex items-center">
           <h1 class="text-5xl font-['Bebas Neue', 'sans-serif']" style="font-family: 'Bebas Neue', sans-serif;
 ">Game guru</h1>
         </div>

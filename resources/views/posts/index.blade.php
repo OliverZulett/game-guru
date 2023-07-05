@@ -12,7 +12,6 @@
         <div class="p-6 text-gray-900">
           <div class="w-full flex justify-between items-center mb-3">
             <h1>All registered posts</h1>
-            <!-- <x-primary-button onclick="window.location.href='{{ route('posts.create') }}'">{{ __('+ Add') }}</x-primary-button> -->
           </div>
           <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-100">
@@ -47,7 +46,7 @@
                   {{ $post->user_name }}
                 </td>
                 <td class="px-6 py-4">
-                  {{ $post->created_at }}
+                  {{date('d M Y', strtotime($post->created_at))}}
                 </td>
                 <td class="px-6 py-4">
                   <button class="text-blue-500 hover:text-blue-700 mr-2" title="Edit" onclick="window.location.href='{{ route('posts.edit', $post->id) }}'">

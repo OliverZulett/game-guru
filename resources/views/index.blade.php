@@ -17,7 +17,7 @@
               </p>
             </div>
             <div class="createdAt  mb-3">
-              <p>{{$post->created_at}}</p>
+              <p>{{date('d M Y', strtotime($post->created_at))}}</p>
             </div>
           </div>
           <div class="creator flex justify-end items-center font-bold text-[#EE6C4D]">
@@ -28,7 +28,7 @@
         @endforeach
 
       </div>
-      <div class="mt-5 text-white">
+      <div class="navigation mt-5 text-white">
         {{ $posts->links() }}
       </div>
     </div>

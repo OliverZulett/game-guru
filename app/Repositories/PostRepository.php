@@ -15,6 +15,7 @@ class PostRepository
   {
     return Post::leftJoin('users', 'posts.user_id', '=', 'users.id')
       ->select('posts.*', 'users.name as user_name')
+      ->orderBy('updated_at', 'desc')
       ->get();
   }
 

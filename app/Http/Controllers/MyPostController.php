@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Validation\ValidationException;
 
 class MyPostController extends Controller
 {
@@ -50,25 +51,31 @@ class MyPostController extends Controller
 
   public function store(Request $request)
   {
-    $postData = $request->validate([
-      'title' => 'required|string',
-      'abstract' => 'required|string',
-      'content' => 'required|string',
-    ]);
-    $postData['user_id'] = Auth::user()->id;
-    $post = $this->postService->createPost($postData);
+    try {
+      $postData = $request->validate([
+        'title' => 'required|string',
+        'image_url' => 'required|string',
+        'abstract' => 'required|string',
+        'content' => 'required|string',
+      ]);
+      $postData['user_id'] = Auth::user()->id;
+      $post = $this->postService->createPost($postData);
 
-    $postImage = [
-      'url' => $request->input('image_url'),
-      'title' => $post->name,
-      'imageable_id' => $post->id,
-      'imageable_type' => class_basename(get_class($post)),
-    ];
-    $this->imageService->createImage($postImage);
+      $postImage = [
+        'url' => $request->input('image_url'),
+        'title' => $post->name,
+        'imageable_id' => $post->id,
+        'imageable_type' => class_basename(get_class($post)),
+      ];
+      $this->imageService->createImage($postImage);
 
-    $post->categories()->sync($request->categories);
-    $post->tags()->sync($request->tags);
-    return Redirect::route('my-posts')->with('status', 'post-created');
+      $post->categories()->sync($request->categories);
+      $post->tags()->sync($request->tags);
+      return Redirect::route('my-posts')->with('status', 'post-created');
+    } catch (ValidationException $e) {
+      $errors = $e->validator->errors();
+      return redirect()->back()->withErrors($errors)->withInput();
+    }
   }
 
   public function edit($id)

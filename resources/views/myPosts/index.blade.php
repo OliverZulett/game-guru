@@ -43,7 +43,13 @@
                   <td class="px-6 py-4">
                     {{ $post->created_at }}
                   </td>
-                  <td class="px-6 py-4">
+                  <td class="px-6 py-4 w-40">
+                    <button class="text-gray-500 hover:text-blue-700 mr-2" title="Preview" onclick="window.location.href='{{ route('posts.preview', $post->id) }}'">
+                      <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke: currentColor;">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                      </svg>
+                    </button>
                     <button class="text-blue-500 hover:text-blue-700 mr-2" title="Edit" onclick="window.location.href='{{ route('my-posts.edit', $post->id) }}'">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit">
                         <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
