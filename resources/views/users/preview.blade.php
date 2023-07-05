@@ -43,7 +43,7 @@
                 {{ __('Biography') }}
             </h2>
             <p class="mt-1 text-sm text-gray-600">
-                {{ __("Bio") }}
+                {{ $user->biography }}
             </p>      
           </div>
           <div class="flex flex-col justify-start mt-5">

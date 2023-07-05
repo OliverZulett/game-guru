@@ -31,12 +31,24 @@
           </x-slot>
 
           <x-slot name="content">
+
+            @if (Auth::user())
+            <x-dropdown-link :href="route('dashboard')" class="text-[#EE6C4D]">
+              {{ __('Dashboard') }}
+            </x-dropdown-link>
+            <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
+                                                this.closest('form').submit();" class="text-[#EE6C4D]">
+              {{ __('Log Out') }}
+            </x-dropdown-link>
+            @else
             <x-dropdown-link :href="route('login')" class="text-[#EE6C4D]">
               {{ __('Sing In') }}
             </x-dropdown-link>
             <x-dropdown-link :href="route('register')" class="text-[#EE6C4D]">
               {{ __('Sing Up') }}
             </x-dropdown-link>
+
+            @endif
           </x-slot>
         </x-dropdown>
       </div>

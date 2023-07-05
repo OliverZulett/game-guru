@@ -23,6 +23,11 @@ class PostService
     return $this->postRepository->getAllWithUserName();
   }
 
+  public function getAllPostsWithUsernameAndImage()
+  {
+    return $this->postRepository->getAllWithUserNameAndImage();
+  }
+
   public function getAllPostsByUserId($id)
   {
     return $this->postRepository->getAllByUserId($id);

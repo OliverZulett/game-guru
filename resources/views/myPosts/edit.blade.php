@@ -7,6 +7,23 @@
 
   <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+      @if ($errors->any())
+      <div class="flex text-red-600 border-2 border-red-600 p-3 rounded-lg bg-red-100 mb-5">
+        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke: currentColor;">
+          <polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+        <div class="ml-2">
+          <strong>Error:</strong>
+          <ul>
+            @foreach($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+          </ul>
+        </div>
+      </div>
+      @endif
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 text-gray-900">
           <header>
@@ -70,9 +87,16 @@
               </div>
             </div>
 
-            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">{{ __("Update") }}</button>
-          </form>
+            <div class="flex mt-10">
+              <x-primary-button type="submit" class="mr-3">
+                {{ __('update') }}
+              </x-primary-button>
+              <x-danger-button onclick="window.location.href='{{ route('my-posts') }}'" class="mr-3">
+                {{ __('cancel') }}
+              </x-danger-button>
+            </div>
 
+          </form>
         </div>
       </div>
     </div>

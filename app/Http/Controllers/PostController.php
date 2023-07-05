@@ -30,7 +30,7 @@ class PostController extends Controller
 
   public function index()
   {
-    $posts = $this->postService->getAllPostsWithUsername();
+    $posts = $this->postService->getAllPostsWithUsernameAndImage();
     $currentPage = LengthAwarePaginator::resolveCurrentPage();
     $perPage = 12;
     $posts = new LengthAwarePaginator(
@@ -49,7 +49,7 @@ class PostController extends Controller
     $postImage = $this->imageService->getImageByImageableId($post->id);
     $post->image = $postImage->url ?? 'https://images.unsplash.com/photo-1577741314755-048d8525d31e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80';
     $user = $this->userService->getUserById($post->user_id);
-    $userImage = $this->imageService->getImageByImageableId($post->id);
+    $userImage = $this->imageService->getImageByImageableId($user->id);
     $user->image = $userImage->url ?? 'https://images.unsplash.com/photo-1577741314755-048d8525d31e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80';
     $postCategories = $post->categories;
     $postTags = $post->tags;

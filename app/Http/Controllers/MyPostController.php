@@ -53,9 +53,9 @@ class MyPostController extends Controller
   {
     try {
       $postData = $request->validate([
-        'title' => 'required|string',
+        'title' => 'required|string|max:100',
         'image_url' => 'required|string',
-        'abstract' => 'required|string',
+        'abstract' => 'required|string|max:255',
         'content' => 'required|string',
       ]);
       $postData['user_id'] = Auth::user()->id;
@@ -91,31 +91,37 @@ class MyPostController extends Controller
 
   public function update(Request $request, $id)
   {
-    $postData = $request->validate([
-      'title' => 'required|string',
-      'abstract' => 'required|string',
-      'content' => 'required|string',
-    ]);
-    $post = $this->postService->updatePost($id, $postData);
-
-    $postImage = $this->imageService->getImageByImageableId($post->id);
-
-    if (!$postImage && $request->has('image_url') && !empty($request->input('image_url'))) {
-      $postImage = [
-        'url' => $request->input('image_url'),
-        'title' => $post->name,
-        'imageable_id' => $post->id,
-        'imageable_type' => class_basename(get_class($post)),
-      ];
-      $this->imageService->createImage($postImage);
-    } elseif ($postImage && $request->has('image_url')) {
-      $postImage->url = $request->input('image_url');
-      $this->imageService->updateImage($postImage->id, $postImage);
+    try {
+      $postData = $request->validate([
+        'title' => 'required|string|max:100',
+        'image_url' => 'required|string',
+        'abstract' => 'required|string|max:255',
+        'content' => 'required|string',
+      ]);
+      $post = $this->postService->updatePost($id, $postData);
+  
+      $postImage = $this->imageService->getImageByImageableId($post->id);
+  
+      if (!$postImage && $request->has('image_url') && !empty($request->input('image_url'))) {
+        $postImage = [
+          'url' => $request->input('image_url'),
+          'title' => $post->name,
+          'imageable_id' => $post->id,
+          'imageable_type' => class_basename(get_class($post)),
+        ];
+        $this->imageService->createImage($postImage);
+      } elseif ($postImage && $request->has('image_url')) {
+        $postImage->url = $request->input('image_url');
+        $this->imageService->updateImage($postImage->id, $postImage);
+      }
+  
+      $post->categories()->sync($request->categories);
+      $post->tags()->sync($request->tags);
+      return Redirect::route('my-posts')->with('status', 'post-updated');
+    } catch (ValidationException $e) {
+      $errors = $e->validator->errors();
+      return redirect()->back()->withErrors($errors)->withInput();
     }
-
-    $post->categories()->sync($request->categories);
-    $post->tags()->sync($request->tags);
-    return Redirect::route('my-posts')->with('status', 'post-updated');
   }
 
   public function destroy($id)

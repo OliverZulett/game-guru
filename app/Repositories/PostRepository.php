@@ -19,6 +19,15 @@ class PostRepository
       ->get();
   }
 
+  public function getAllWithUserNameAndImage()
+  {
+    return Post::leftJoin('users', 'posts.user_id', '=', 'users.id')
+      ->leftJoin('images', 'users.id', '=', 'imageable_id')
+      ->select('posts.*', 'users.name as user_name', 'images.url as user_image')
+      ->orderBy('updated_at', 'desc')
+      ->get();
+  }
+
   public function getAllByUserId($userId)
   {
     return Post::where('user_id', $userId)

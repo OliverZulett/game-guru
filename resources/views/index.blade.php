@@ -22,7 +22,11 @@
           </div>
           <div class="creator flex justify-end items-center font-bold text-[#EE6C4D]">
             <p class="mr-2">by: {{$post->user_name}}</p>
-            <img class="rounded-full w-10 h-10 object-cover" src="{{'https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2531&q=80' }}" alt="Imagen">
+
+            @if ($post->user_image)
+            <img class="rounded-full w-10 h-10 object-cover" src="{{ $post->user_image }}" alt="Imagen">
+
+            @endif
           </div>
         </div>
         @endforeach

@@ -4,9 +4,6 @@
       {{ __('Create Post') }}
     </h2>
   </x-slot>
-
-  {{$errors}}
-
   <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       @if ($errors->any())
@@ -88,7 +85,16 @@
               </div>
             </div>
 
-            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">{{ __("Create") }}</button>
+            <!-- <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">{{ __("Create") }}</button> -->
+            
+            <div class="flex mt-10">
+              <x-primary-button type="submit" class="mr-3">
+                {{ __('create') }}
+              </x-primary-button>
+              <x-danger-button onclick="window.location.href='{{ route('my-posts') }}'" class="mr-3">
+                {{ __('cancel') }}
+              </x-danger-button>
+            </div>
           </form>
 
         </div>
